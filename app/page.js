@@ -1,9 +1,17 @@
-import HomePage from "@/pages/HomePage";
+"use client"
+import React, { useContext } from "react";
+import { AppContext } from "@/src/app/AppContext";
+
 
 export default function Home() {
+
+  const { isDarkMode, setIsDarkMode } = useContext(AppContext);
+
   return (
-    <div>
-      <HomePage />
+    <div className={`bgbl ${
+      isDarkMode ? "dark-theme" : ""
+    } h-screen `}>
+     
     </div>
   );
 }

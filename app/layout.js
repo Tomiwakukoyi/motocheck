@@ -1,17 +1,22 @@
-import { Inter } from "next/font/google";
+"use client"
 import "./globals.css";
+import Navbar from "@/src/component/Navbar";
+import { AppContextProvider } from "@/src/app/AppContext";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Moto Check",
-  description: "Created by Tekkd Solutions",
-};
+// export const metadata = {
+//   title: "Moto Check",
+//   description: "Created by Tekkd Solutions",
+// };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" >
+      <body className=" w-screen ">
+        <AppContextProvider>
+          <Navbar />
+          {children}
+        </AppContextProvider>
+      </body>
     </html>
   );
 }
