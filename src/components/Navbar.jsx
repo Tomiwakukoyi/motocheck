@@ -1,12 +1,15 @@
-import CommuteIcon from '@mui/icons-material/Commute';
+import CommuteIcon from "@mui/icons-material/Commute";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className='flex items-center justify-center gap-2 merienda-font h-14 text-xl'>
+    <Link href="/">
+      <nav className="flex items-center justify-center gap-3 merienda-font h-14 text-xl">
         <CommuteIcon />
         <span>MotoCheck</span>
-    </nav>
-  )
-}
+      </nav>
+    </Link>
+  );
+};
 
-export default Navbar
+export default Navbar;
