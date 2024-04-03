@@ -9,7 +9,7 @@ const HeroSection = () => {
     window.open("https://nvis.frsc.gov.ng/VehicleManagement/VerifyPlateNo", "_blank");
   };
   return (
-    <main className="bg-green-600 w-screen h-full flex flex-wrap justify-center">
+    <main className="bg-green-600 w-screen h-full gap-14 flex flex-wrap justify-center py-5">
       {howInfo.map(({ title, description, buttonTitle }, index) => (
         <HeroSectionTemplate
           key={index}
