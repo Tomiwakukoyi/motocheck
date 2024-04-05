@@ -3,7 +3,7 @@ import FormTemplate from "../FormTemplate";
 
 const SearchForm = () => {
   return (
-    <div className=" w-screen flex items-center justify-center h-400px md:h-500px bg-carBg">
+    <div className=" w-screen flex items-center justify-center h-400px md:h-500px bg-[#48595e] md:bg-carBg">
         <FormTemplate />
     </div>
   );
