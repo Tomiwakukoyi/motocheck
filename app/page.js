@@ -1,13 +1,20 @@
+"use client";
+import React from "react";
+import SearchForm from "@/src/components/home/SearchForm";
+import { AppProvider } from "@/context/searchContext";
 import GeneralInfo from "@/src/components/home/GeneralInfo";
 import HeroSection from "@/src/components/home/HeroSection";
-import SearchForm from "@/src/components/home/SearchForm";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="w-screen">
-      <SearchForm />
-      <HeroSection />
-      <GeneralInfo />
-    </div>
+    <AppProvider>
+      <div className="w-screen">
+        <SearchForm />
+        <HeroSection />
+        <GeneralInfo />
+      </div>
+    </AppProvider>
   );
-}
+};
+
+export default Home;
