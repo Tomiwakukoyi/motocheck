@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
+import ResultPage from "@/app/data/page";
 import { useAppContext } from "@/context/searchContext";
 import Link from "next/link";
+import PlateNoDetails from "../api-result/PlateNoDetails";
 
 const SearchForm = () => {
   const { setApiResult, setApiError } = useAppContext();
@@ -28,7 +30,7 @@ const SearchForm = () => {
         }
       );
       setApiResult(response.data);
-      console.log(response);
+      console.log(response.data.information.registeredLGA, "this that");
     } catch (error) {
       console.log(error);
       setApiError(
@@ -38,7 +40,7 @@ const SearchForm = () => {
   };
 
   return (
-    <div className="w-screen flex items-center justify-center h-400px md:h-500px bg-[#48595e] md:bg-carBg">
+    <div className="w-screen flex flex-col items-center justify-center h-full py-10  bg-[#48595e] md:bg-carBg">
       <div className="h-300px flex flex-col gap-2 items-center justify-center w-full md:w-500px">
         <span className="text-white mr-20">
           Enter first three digits of plate number:
@@ -51,15 +53,15 @@ const SearchForm = () => {
             onChange={handleInputChange}
           />
         </div>
-        <Link href={apiResult ? "/data" : apiError ? "/error" : "#"}>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleSubmit}
-          >
-            Search
-          </button>
-        </Link>
+
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleSubmit}
+        >
+          Search
+        </button>
       </div>
+      {apiResult ? <ResultPage /> : <p>Loading......</p>}
     </div>
   );
 };
