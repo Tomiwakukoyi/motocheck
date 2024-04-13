@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import ResultPage from "@/app/data/page";
 import { useAppContext } from "@/context/searchContext";
-import Link from "next/link";
+import Image from 'next/image'
 import PlateNoDetails from "../api-result/PlateNoDetails";
 
 const SearchForm = () => {
@@ -46,9 +46,10 @@ const SearchForm = () => {
           Enter first three digits of plate number:
         </span>
         <div className="flex items-center justify-center rounded-r-xl">
+          <Image src="/images/ng.png" width={100} height={100} className="h-14" />
           <input
             type="text"
-            className="tracking-widest uppercase text-center focus:outline-none h-14 w-72 rounded-l-none rounded-xl pl-2 text-2xl font-bold"
+            className="tracking-widest uppercase text-center focus:outline-none h-14 w-200px rounded-l-none rounded-xl pl-1 text-2xl font-bold"
             value={plateNumber}
             onChange={handleInputChange}
           />
