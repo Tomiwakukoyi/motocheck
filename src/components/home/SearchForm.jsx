@@ -15,6 +15,7 @@ const SearchForm = () => {
     setPlateNumber(event.target.value.toUpperCase().slice(0, 3));
   };
 
+  
   const handleSubmit = async () => {
     try {
       const response = await axios.get(
@@ -30,11 +31,11 @@ const SearchForm = () => {
           },
         }
       );
-      if (res) {
-        
-      }
+
+      console.log(response)
+
       setApiResult(response.data);
-      console.log(response.data.information.registeredLGA, "this that tk");
+      console.log(response.data.information.registeredLGA);
     } catch (error) {
       console.log(error);
       // setApiError(
@@ -75,20 +76,20 @@ const SearchForm = () => {
         </div>
 
         <button
-          className="bg-gray-500 hover:bg-gray-800 text-white font-semibold py-1 px-4 rounded"
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-4 rounded"
           onClick={handleSubmit}
         >
           Search
         </button>
       </div>
+      <ResultPage  />
       {/* {apiResult ? (
         <ResultPage />
       ) : apiError ? (
-        <ErrorComponent error={apiError} />
+        <ErrorComponent />
       ) : (
         <p>Loading...</p>
       )} */}
-      <ErrorComponent />
     </div>
   );
 };
