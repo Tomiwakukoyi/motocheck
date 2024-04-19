@@ -14,7 +14,6 @@ const ResultPage = () => {
     return (
       <div className="text-yellow-500">
         <h1 className="text-white">Plate Number Details</h1>
-        <p>ID: {id}</p>
         {/* Conditionally render Registered State */}
         {registeredState ? <p>Registered State: {registeredState}</p> : null}
         {/* Conditionally render Registered LGA */}
@@ -27,9 +26,9 @@ const ResultPage = () => {
     );
   } else {
     return (
-      <div className="bg-black text-yellow-500">
+      <div className="bg-black text-yellow-500 capitalize">
         <h1 className="text-black">Plate Number Details</h1>
-        <p>No results</p>
+        <p>No Plate Number Detail put in</p>
       </div>
     );
   }

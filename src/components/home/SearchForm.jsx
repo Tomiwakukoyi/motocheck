@@ -69,27 +69,26 @@ const SearchForm = () => {
           />
           <input
             type="text"
-            className="tracking-widest uppercase text-center focus:outline-none h-14 w-200px rounded-l-none rounded-xl pl-1 text-2xl font-bold"
+            className="tracking-widest uppercase text-center focus:outline-none h-14 w-200px md:w-[250px] rounded-l-none rounded-xl pl-1 text-2xl font-bold"
             value={plateNumber}
             onChange={handleInputChange}
           />
         </div>
 
         <button
-          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-4 rounded"
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 md:p-3 md:px-8  md:bg-black  px-4 rounded-md"
           onClick={handleSubmit}
         >
           Search
         </button>
       </div>
-      <ResultPage  />
-      {/* {apiResult ? (
+      {apiResult ? (
         <ResultPage />
       ) : apiError ? (
         <ErrorComponent />
       ) : (
         <p>Loading...</p>
-      )} */}
+      )}
     </div>
   );
 };
