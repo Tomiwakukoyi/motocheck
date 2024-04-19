@@ -1,13 +1,37 @@
-
-import PlateNoDetails from '@/src/components/api-result/plateNoDetails'
-import React from 'react'
+import React from "react";
+import { useAppContext } from "@/context/searchContext";
 
 const ResultPage = () => {
-  return (
-    <div className=' pt-40'>
-        <PlateNoDetails />
-    </div>
-  )
-}
+  const { apiResult } = useAppContext();
 
-export default ResultPage
+  if (apiResult && apiResult.information) {
+    const { id, registeredState, registeredLGA, stateSlogan } =
+      apiResult.information;
+
+    // Check if any of the details are empty
+    const detailsEmpty = !registeredState || !registeredLGA || !stateSlogan;
+
+    return (
+      <div className="text-yellow-500">
+        <h1 className="text-white">Plate Number Details</h1>
+        {/* Conditionally render Registered State */}
+        {registeredState ? <p>Registered State: {registeredState}</p> : null}
+        {/* Conditionally render Registered LGA */}
+        {registeredLGA ? <p>Registered LGA: {registeredLGA}</p> : null}
+        {/* Conditionally render State Slogan */}
+        {stateSlogan ? <p>State Slogan: {stateSlogan}</p> : null}
+        {/* Render message if details are empty */}
+        {detailsEmpty && <p>No results</p>}
+      </div>
+    );
+  } else {
+    return (
+      <div className="bg-black text-yellow-500 capitalize">
+        <h1 className="text-black">Plate Number Details</h1>
+        <p>No Plate Number Detail put in</p>
+      </div>
+    );
+  }
+};
+
+export default ResultPage;

@@ -1,8 +1,9 @@
-"use client";
 import React, { useState } from "react";
 import axios from "axios";
+import ResultPage from "@/app/data/page";
 import { useAppContext } from "@/context/searchContext";
-import Link from "next/link";
+import Image from "next/image";
+import ErrorComponent from "../api-result/ErrorComponent";
 
 const SearchForm = () => {
   const { setApiResult, setApiError } = useAppContext();
@@ -27,39 +28,67 @@ const SearchForm = () => {
           },
         }
       );
-      setApiResult(response.data);
+
       console.log(response);
+
+      setApiResult(response.data);
+      console.log(response.data.information.registeredLGA);
+
+      // Clear input box after successful submission
+      setPlateNumber("");
     } catch (error) {
       console.log(error);
-      setApiError(
-        "An error occurred while fetching data. Please try again later."
-      );
+      // setApiError(
+      //   "An error occurred while fetching data. Please try again later."
+      // );
+      // Handle network errors specifically
+      if (error.code === "ERR_NETWORK") {
+        setApiError("Network Error: Please check your internet connection.");
+      } else if (apiResult === "undefined") {
+        setApiError("No results found for the entered plate number.");
+      } else {
+        setApiError(
+          "An error occurred while fetching data. Please try again later."
+        );
+      }
     }
   };
 
   return (
-    <div className="w-screen flex items-center justify-center h-400px md:h-500px bg-[#48595e] md:bg-carBg">
+    <div className="w-screen flex flex-col items-center justify-center h-full py-10  bg-[#48595e] md:bg-carBg">
       <div className="h-300px flex flex-col gap-2 items-center justify-center w-full md:w-500px">
-        <span className="text-white mr-20">
+        <span className="text-white ">
           Enter first three digits of plate number:
         </span>
         <div className="flex items-center justify-center rounded-r-xl">
+          <Image
+            src="/images/ng.png"
+            width={100}
+            height={100}
+            className="h-14"
+          />
           <input
             type="text"
-            className="tracking-widest uppercase text-center focus:outline-none h-14 w-72 rounded-l-none rounded-xl pl-2 text-2xl font-bold"
+            className="tracking-widest uppercase text-center focus:outline-none h-14 w-200px md:w-[250px] rounded-l-none rounded-xl pl-1 text-2xl font-bold"
             value={plateNumber}
             onChange={handleInputChange}
           />
         </div>
-        <Link href={apiResult ? "/data" : apiError ? "/error" : "#"}>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleSubmit}
-          >
-            Search
-          </button>
-        </Link>
+
+        <button
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 md:p-3 md:px-8  md:bg-black  px-4 rounded-md"
+          onClick={handleSubmit}
+        >
+          Search
+        </button>
       </div>
+      {apiResult ? (
+        <ResultPage />
+      ) : apiError ? (
+        <ErrorComponent />
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
