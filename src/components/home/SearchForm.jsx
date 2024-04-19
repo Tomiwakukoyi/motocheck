@@ -1,10 +1,8 @@
-"use client";
 import React, { useState } from "react";
 import axios from "axios";
 import ResultPage from "@/app/data/page";
 import { useAppContext } from "@/context/searchContext";
 import Image from "next/image";
-import PlateNoDetails from "../api-result/PlateNoDetails";
 import ErrorComponent from "../api-result/ErrorComponent";
 
 const SearchForm = () => {
@@ -15,7 +13,6 @@ const SearchForm = () => {
     setPlateNumber(event.target.value.toUpperCase().slice(0, 3));
   };
 
-  
   const handleSubmit = async () => {
     try {
       const response = await axios.get(
@@ -32,10 +29,13 @@ const SearchForm = () => {
         }
       );
 
-      console.log(response)
+      console.log(response);
 
       setApiResult(response.data);
       console.log(response.data.information.registeredLGA);
+
+      // Clear input box after successful submission
+      setPlateNumber("");
     } catch (error) {
       console.log(error);
       // setApiError(
