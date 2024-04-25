@@ -15,7 +15,7 @@ const ResultPage = () => {
     return (
       <div className=" bg-gray-500 rounded-lg p-3 py-5 flex flex-col ">
         {!detailsEmpty ? (
-          <h1 className="text-white mx-auto font-medium text-lg font-sans ">
+          <h1 className="text-white mx-auto font-medium text-lg md:text-2xl font-sans ">
             Registration Details - {registeredLGA.slice(0, 3)}
           </h1>
         ) : (

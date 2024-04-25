@@ -76,7 +76,7 @@ const SearchForm = () => {
         </div>
 
         <button
-          className=" bg-slate-300 hover:bg-slate-500 text-black font-medium py-1 md:p-3 md:px-8  md:bg-black  px-4 rounded-md"
+          className=" bg-slate-300 hover:bg-slate-500 text-black font-medium py-1 md:p-3 md:px-8  px-4 rounded-md"
           onClick={handleSubmit}
         >
           Search
