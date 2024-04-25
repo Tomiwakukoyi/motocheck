@@ -76,7 +76,7 @@ const SearchForm = () => {
         </div>
 
         <button
-          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 md:p-3 md:px-8  md:bg-black  px-4 rounded-md"
+          className=" bg-slate-300 hover:bg-slate-500 text-black font-medium py-1 md:p-3 md:px-8  md:bg-black  px-4 rounded-md"
           onClick={handleSubmit}
         >
           Search
@@ -87,7 +87,7 @@ const SearchForm = () => {
       ) : apiError ? (
         <ErrorComponent />
       ) : (
-        <p>Loading...</p>
+        <></>
       )}
     </div>
   );
