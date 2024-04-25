@@ -6,7 +6,7 @@ const ResultPage = () => {
   const { apiResult } = useAppContext();
 
   if (apiResult && apiResult.information) {
-    const { id, registeredState, registeredLGA, stateSlogan } =
+    const {  registeredState, registeredLGA, stateSlogan } =
       apiResult.information;
 
     // Check if any of the details are empty
