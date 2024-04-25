@@ -85,7 +85,7 @@ const SearchForm = () => {
       {apiResult ? (
         <ResultPage />
       ) : apiError ? (
-        <ErrorComponent />
+        <ErrorComponent errorMsg="Network Error, Please try again!" />
       ) : (
         <></>
       )}

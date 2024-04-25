@@ -15,44 +15,45 @@ const ResultPage = () => {
     return (
       <div className=" bg-gray-500 rounded-lg p-3 py-5 flex flex-col ">
         {!detailsEmpty ? (
-          <h1 className="text-white mx-auto font-medium text-lg font-sans " >
-            Registration Details - {registeredLGA.slice(0,3)}
+          <h1 className="text-white mx-auto font-medium text-lg font-sans ">
+            Registration Details - {registeredLGA.slice(0, 3)}
           </h1>
         ) : (
           ""
         )}
-        <div className="flex flex-col gap-5 mt-7 font-mono">
+        <div className="flex flex-col gap-5 mt-7 font-serif">
           {/* Conditionally render Registered State */}
           {registeredState ? (
             <p className="heading text-gray-200 text-lg">
-              <span className="head text-base font-sans">Registered State:</span> {registeredState}
+              <span className="head font-medium">Registered State: </span>
+              {registeredState}
             </p>
           ) : null}
           {/* Conditionally render Registered LGA */}
           {registeredLGA ? (
             <p className="heading text-gray-200 text-lg">
-              <span className="head text-base font-sans">Registered LGA:</span> {registeredLGA}
+              <span className="head font-medium">LGA: </span>
+              {registeredLGA.slice(5)}
             </p>
           ) : null}
           {/* Conditionally render State Slogan */}
           {stateSlogan ? (
             <p className="heading text-gray-200 text-lg">
-              <span className="head text-base font-sans">State Slogan: </span>
+              <span className="head font-medium">State Slogan: </span>
               {stateSlogan}
             </p>
           ) : null}
           {/* Render message if details are empty */}
         </div>
         {detailsEmpty && (
-          <ErrorComponent errorMsg="Not found, try again" />
+          <ErrorComponent errorMsg="I no sabi where them register this one o!" />
         )}
       </div>
     );
   } else {
     return (
-      <div className="bg-black text-yellow-500 capitalize">
-        <h1 className="text-black">Plate Number Details</h1>
-        <p>No Plate Number Detail put in</p>
+      <div className="bg-gray-500 rounded-lg p-3 py-5">
+        <ErrorComponent errorMsg="Ogini?! Fix up please" />
       </div>
     );
   }
