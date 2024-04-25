@@ -24,21 +24,21 @@ const ResultsComponent = () => {
         <div className="flex flex-col gap-5 mt-7 font-serif">
           {/* Conditionally render Registered State */}
           {registeredState ? (
-            <p className="heading text-gray-200 text-lg">
+            <p className="heading text-gray-200 md:text-lg">
               <span className="head font-medium">Registered State: </span>
               {registeredState}
             </p>
           ) : null}
           {/* Conditionally render Registered LGA */}
           {registeredLGA ? (
-            <p className="heading text-gray-200 text-lg">
+            <p className="heading text-gray-200 md:text-lg">
               <span className="head font-medium">LGA: </span>
               {registeredLGA.slice(5)}
             </p>
           ) : null}
           {/* Conditionally render State Slogan */}
           {stateSlogan ? (
-            <p className="heading text-gray-200 text-lg">
+            <p className="heading text-gray-200 text:sm md:text-lg">
               <span className="head font-medium">State Slogan: </span>
               {stateSlogan}
             </p>
