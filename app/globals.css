@@ -25,3 +25,20 @@ body{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.heading{
+  background-color: slategray;
+  border-radius: 20PX;
+  padding: 13px;
+  margin-right: auto;
+  margin-left: auto;
+  font-weight:700;
+  
+}
+.heading:hover{
+  padding: 15px;
+}
+.head{
+  font-weight: normal;
+  color: whitesmoke;
+}

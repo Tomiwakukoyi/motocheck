@@ -1,5 +1,6 @@
 import React from "react";
 import { useAppContext } from "@/context/searchContext";
+import ErrorComponent from "@/src/components/api-result/ErrorComponent";
 
 const ResultPage = () => {
   const { apiResult } = useAppContext();
@@ -12,23 +13,47 @@ const ResultPage = () => {
     const detailsEmpty = !registeredState || !registeredLGA || !stateSlogan;
 
     return (
-      <div className="text-yellow-500">
-        <h1 className="text-white">Plate Number Details</h1>
-        {/* Conditionally render Registered State */}
-        {registeredState ? <p>Registered State: {registeredState}</p> : null}
-        {/* Conditionally render Registered LGA */}
-        {registeredLGA ? <p>Registered LGA: {registeredLGA}</p> : null}
-        {/* Conditionally render State Slogan */}
-        {stateSlogan ? <p>State Slogan: {stateSlogan}</p> : null}
-        {/* Render message if details are empty */}
-        {detailsEmpty && <p>No results</p>}
+      <div className=" bg-gray-500 rounded-lg p-3 py-5 flex flex-col ">
+        {!detailsEmpty ? (
+          <h1 className="text-white mx-auto font-medium text-lg md:text-2xl font-sans ">
+            Registration Details - {registeredLGA.slice(0, 3)}
+          </h1>
+        ) : (
+          ""
+        )}
+        <div className="flex flex-col gap-5 mt-7 font-serif">
+          {/* Conditionally render Registered State */}
+          {registeredState ? (
+            <p className="heading text-gray-200 text-lg">
+              <span className="head font-medium">Registered State: </span>
+              {registeredState}
+            </p>
+          ) : null}
+          {/* Conditionally render Registered LGA */}
+          {registeredLGA ? (
+            <p className="heading text-gray-200 text-lg">
+              <span className="head font-medium">LGA: </span>
+              {registeredLGA.slice(5)}
+            </p>
+          ) : null}
+          {/* Conditionally render State Slogan */}
+          {stateSlogan ? (
+            <p className="heading text-gray-200 text-lg">
+              <span className="head font-medium">State Slogan: </span>
+              {stateSlogan}
+            </p>
+          ) : null}
+          {/* Render message if details are empty */}
+        </div>
+        {detailsEmpty && (
+          <ErrorComponent errorMsg="I no sabi where them register this one o!" />
+        )}
       </div>
     );
   } else {
     return (
-      <div className="bg-black text-yellow-500 capitalize">
-        <h1 className="text-black">Plate Number Details</h1>
-        <p>No Plate Number Detail put in</p>
+      <div className="bg-gray-500 rounded-lg p-3 py-5">
+        <ErrorComponent errorMsg="Ogini?! Fix up please" />
       </div>
     );
   }
