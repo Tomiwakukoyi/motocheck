@@ -2,7 +2,7 @@ import React from "react";
 import { useAppContext } from "@/context/searchContext";
 import ErrorComponent from "@/src/components/api-result/ErrorComponent";
 
-const ResultPage = () => {
+const ResultsComponent = () => {
   const { apiResult } = useAppContext();
 
   if (apiResult && apiResult.information) {
@@ -59,4 +59,4 @@ const ResultPage = () => {
   }
 };
 
-export default ResultPage;
+export default ResultsComponent;

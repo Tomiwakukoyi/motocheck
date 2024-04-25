@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ResultPage from "@/app/data/page";
 import { useAppContext } from "@/context/searchContext";
 import Image from "next/image";
 import ErrorComponent from "../api-result/ErrorComponent";
+import ResultsComponent from "../api-result/ResultsComponent";
 
 const SearchForm = () => {
   const { setApiResult, setApiError } = useAppContext();
@@ -83,7 +83,7 @@ const SearchForm = () => {
         </button>
       </div>
       {apiResult ? (
-        <ResultPage />
+        <ResultsComponent />
       ) : apiError ? (
         <ErrorComponent errorMsg="Network Error, Please try again!" />
       ) : (
