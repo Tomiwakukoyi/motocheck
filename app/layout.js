@@ -2,6 +2,7 @@ import Navbar from "@/src/components/Navbar";
 import "./globals.css";
 import { AppProvider } from "@/context/searchContext";
 import { Analytics } from "@vercel/analytics/react"
+import Footer from "@/src/components/Footer";
 
 export const metadata = {
   title: "Moto Check",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Analytics />
+          <Footer />
         </body>
       </AppProvider>
     </html>
